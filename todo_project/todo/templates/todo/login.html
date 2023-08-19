@@ -1,0 +1,25 @@
+<section class="header">
+  <h2 class="title">Login</h2>
+  <div class="row">
+    <div class="three columns value-prop"></div>
+    <div class="six columns">
+      <form method=post>
+        {% csrf_token %}
+        <dl>
+          <dd>{{ form }}
+          <dt><input type="submit" class="button button-primary" value="Login">
+        </dl>
+      </form>
+      <p>New user? <a href="/register">Click here to register</a>.</p>
+      {% if form.errors or form.non_field_errors %}
+            <div class>
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
+
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+    </div>
+  </div>
+</section>
